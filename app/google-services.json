@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "655625573378",
+    "project_id": "vic-base-bc93e",
+    "storage_bucket": "vic-base-bc93e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655625573378:android:d572be07a387b6c80d831b",
+        "android_client_info": {
+          "package_name": "com.example.vic_base"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655625573378-he2k23kdl6m3kupli4t96omc4u76g75u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsamWrZJgf8IR4zBisPb-PRBc-LIb4GbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655625573378-he2k23kdl6m3kupli4t96omc4u76g75u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
