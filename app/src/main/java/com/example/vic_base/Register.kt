@@ -1,7 +1,9 @@
 package com.example.vic_base
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -37,6 +39,8 @@ class Register : AppCompatActivity() {
             var password = edicode.text.toString().trim()
 
 
+
+
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()){
 
                 Toast.makeText(this, "One of the fields is not complete", Toast.LENGTH_SHORT).show()
@@ -48,8 +52,15 @@ class Register : AppCompatActivity() {
                     
                     if (it.isSuccessful){
                         Toast.makeText(this, "User Created Successfully", Toast.LENGTH_SHORT).show()
+
+
+                        var gotologin = Intent(this, LoginActivity::class.java)
+                        startActivity(gotologin)
+
                     }else{
                         Toast.makeText(this, "Failed to create account", Toast.LENGTH_SHORT).show()
+
+                        Log.d("TAG", "error--->", it.exception)
                     }
                     
                     

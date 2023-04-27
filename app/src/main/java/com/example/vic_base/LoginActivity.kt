@@ -59,6 +59,8 @@ class LoginActivity : AppCompatActivity() {
 
         btnregister.setOnClickListener {
 
+            var gotoreg = Intent(this, Register::class.java)
+            startActivity(gotoreg)
 
         }
 
