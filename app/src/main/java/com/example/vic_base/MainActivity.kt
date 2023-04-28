@@ -9,27 +9,67 @@ import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var edttext:EditText
-    lateinit var btn_button:Button
+   lateinit var edtcar:EditText
+   lateinit var edtmodel:EditText
+   lateinit var edtprice:EditText
+   lateinit var btnphoto:Button
+   lateinit var btndata:Button
+   lateinit var btnview:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        edttext = findViewById(R.id.edt_text)
-        btn_button = findViewById(R.id.btn)
+        edtcar = findViewById(R.id.edt_car)
+        edtmodel = findViewById(R.id.edt_model)
+        edtprice = findViewById(R.id.edt_price)
+        btnphoto = findViewById(R.id.btn_car)
+        btndata = findViewById(R.id.btn_data)
+        btnview = findViewById(R.id.btn_view)
+
+
+        //initialise firebase
 
         var database = FirebaseDatabase.getInstance()
-        var databaseRef = database.reference
+        var databaseref = database.getReference("cars")
 
-        btn_button.setOnClickListener {
+        btnphoto.setOnClickListener {
 
+            var carmake = edtcar.text.toString().trim()
+            var carmodel = edtmodel.text.toString().trim()
+            var carprice = edtprice.text.toString().trim()
 
-            var user_data = edttext.text.toString().trim()
-           // Toast.makeText(this, user_data, Toast.LENGTH_SHORT).show()
-            databaseRef.setValue(user_data)
+            if (carmake.isEmpty()||carmodel.isEmpty()||carprice.isEmpty()) {
+
+                Toast.makeText(this, "Cannot Submit an Empty form", Toast.LENGTH_SHORT).show()
+
+            }else{
+
+                var usercar = Car(carmake,carmodel,carprice)
+                var ref = FirebaseDatabase.getInstance().getReference().child("cars")
+                
+                ref.setValue(usercar).addOnCompleteListener{
+                    
+                    if (it.isSuccessful){
+                        Toast.makeText(this, "Car Data Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                        
+                    }else{
+                        Toast.makeText(this, "Failed to Save Car Info", Toast.LENGTH_SHORT).show()
+                    }
+                    
+                }
+                
+            }
         }
 
+        btndata.setOnClickListener {
 
+
+        }
+
+        btnview.setOnClickListener {
+
+
+        }
     }
 }
