@@ -14,6 +14,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var edtpass:EditText
     lateinit var btnlogin:Button
     lateinit var btnregister:Button
+    lateinit var btn:Button
 
     lateinit var auth:FirebaseAuth
 
@@ -25,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         edtpass = findViewById(R.id.edt_pass)
         btnlogin = findViewById(R.id.btn_login)
         btnregister = findViewById(R.id.btn_register)
+        btn = findViewById(R.id.button)
 
         auth = FirebaseAuth.getInstance()
 
@@ -62,6 +64,10 @@ class LoginActivity : AppCompatActivity() {
             var gotoreg = Intent(this, Register::class.java)
             startActivity(gotoreg)
 
+        }
+        btn.setOnClickListener {
+            var gotoimageview = Intent(this, image::class.java)
+            startActivity(gotoimageview)
         }
 
     }
