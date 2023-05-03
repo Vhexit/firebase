@@ -9,12 +9,13 @@ import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
 
-   lateinit var edtcar:EditText
-   lateinit var edtmodel:EditText
-   lateinit var edtprice:EditText
-   lateinit var btnphoto:Button
-   lateinit var btndata:Button
-   lateinit var btnview:Button
+    lateinit var edtcar: EditText
+    lateinit var edtmodel: EditText
+    lateinit var edtprice: EditText
+
+    lateinit var btnphoto: Button
+    lateinit var btndata: Button
+    lateinit var btnview: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,8 @@ class MainActivity : AppCompatActivity() {
         var database = FirebaseDatabase.getInstance()
         var databaseref = database.getReference("cars")
 
-        btnphoto.setOnClickListener {
+
+        btndata.setOnClickListener {
 
             var carmake = edtcar.text.toString().trim()
             var carmodel = edtmodel.text.toString().trim()
@@ -47,29 +49,27 @@ class MainActivity : AppCompatActivity() {
 
                 var usercar = Car(carmake,carmodel,carprice)
                 var ref = FirebaseDatabase.getInstance().getReference().child("cars")
-                
+
                 ref.setValue(usercar).addOnCompleteListener{
-                    
+
                     if (it.isSuccessful){
                         Toast.makeText(this, "Car Data Uploaded Successfully", Toast.LENGTH_SHORT).show()
-                        
+
                     }else{
                         Toast.makeText(this, "Failed to Save Car Info", Toast.LENGTH_SHORT).show()
                     }
-                    
+
                 }
-                
+
+
             }
-        }
-
-        btndata.setOnClickListener {
 
 
-        }
-
-        btnview.setOnClickListener {
 
 
         }
+
+
     }
+
 }
